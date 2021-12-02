@@ -5,5 +5,7 @@
 		echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/".$_GET['page'].".css\">";
 	}
 	?>
+	<link rel="stylesheet" type="text/css" href="styles/header.css">
+	<link rel="stylesheet" type="text/css" href="styles/footer.css">
 	<title>NDI</title>
 </head>

@@ -15,7 +15,7 @@
 		}
 	}
 	else{
-		include 'accueil.html';
+		include 'includes/accueil.html';
 	}
 	include 'includes/footer.html';
 ?>
