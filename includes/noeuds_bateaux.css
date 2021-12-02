@@ -1,0 +1,12 @@
+.barre {
+    border-left: 2px solid black;
+    height: 500px;
+}
+
+.noeud { 
+    height: 10px; 
+    width: 10px; 
+    background-color: white;
+    border: 2px solid rgba(0, 0, 0, 1);
+    border-radius: 50%; 
+} 
