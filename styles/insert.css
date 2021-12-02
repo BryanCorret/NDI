@@ -1,0 +1,29 @@
+
+.formulaire{
+    margin: 1%
+}
+.erreur_article_email{
+    margin : 1% 1% 1% 0%;
+    background-color: #FBBBB5;
+    border-radius: 15%;
+    width: 25%;
+    padding: 20px;
+}
+
+.attente{
+    background-color: #B5FBBF;
+    border-radius: 15%;
+    width: 25%;
+    padding: 20px;
+
+}
+img{
+    margin-right: 3%;
+    margin-left: 1%;
+    height: 1.5em;
+    width: 1.5em;
+}
+.check{
+    height: 1.5em;
+    width: 2.2em;
+}
