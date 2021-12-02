@@ -1,8 +1,8 @@
 nav{
-    /* width: 100%; */
-    /* margin: 0 auto; */
+    width: 100%;
+    margin: 0 auto;
     background-color: white;
-    /* position: sticky; */
+    position: sticky;
     /* top: 0px; */
 }
 
@@ -31,6 +31,7 @@ nav ul li:last-child{
     margin-right: 15%;
 } */
 
+
 nav ul::after{
     content: "";
     display: table;
@@ -50,7 +51,7 @@ nav a:hover{
     border-bottom: 2px solid gold;
 }
 
-.sousmenu{
+.sous{
     display: none;
     box-shadow: 0px 1px 2px #CCC;
     background-color: white;
@@ -58,23 +59,23 @@ nav a:hover{
     width: 100%;
     z-index: 1000;
 }
-nav > ul li:hover .sousmenu{
+nav > ul li:hover .sous{
     display: block;
 }
-.sousmenu li{
+.sous li{
     float: none;
     width: 100%;
     text-align: left;
 }
-.sousmenu a{
+.sous a{
     padding: 10px;
     border-bottom: none;
 }
-.sousmenu a:hover{
+.sous a:hover{
     border-bottom: none;
     background-color: RGBa(200,200,200,0.1);
 }
-.menuderoulant > a::after{
+.deroulant > a::after{
     content:" ▼";
     font-size: 12px;
 }
