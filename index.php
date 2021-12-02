@@ -5,8 +5,11 @@
 ?>
 <body>
 	<?php 
-		if (True) {
-			echo "test";
+		if(isset($_GET['page'])) {
+			include 'includes/accueil.html';
+		}
+		else{
+			include 'includes/accueil.html';
 		}
 	?>
 </body>
