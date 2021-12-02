@@ -4,6 +4,11 @@
 	if(file_exists("styles/".$_GET['page'].".css")) {
 		echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/".$_GET['page'].".css\">";
 	}
+	else{
+		if (!isset($_GET['page'])) {
+			echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/accueil.css\">";
+		}
+	}
 	?>
 	<link rel="stylesheet" type="text/css" href="styles/header.css">
 	<link rel="stylesheet" type="text/css" href="styles/footer.css">

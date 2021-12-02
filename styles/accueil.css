@@ -1,3 +1,9 @@
 #actualites{
     display: flex;
 }
+#sectionUp{
+    display: flex;
+}
+#sectionUp > article > img{
+    display: block;
+}
