@@ -13,14 +13,14 @@ insert into DEPARTEMENT values (1,'Nord');
 insert into PAYS values (1,'France');
 
 -- Les être né à
-insert into ETRENEA values (1,1,null,null,STR_TO_DATE('1839-06-18','YYYY-MM-DD'));
-insert into ETRENEA values (2,null,null,null,STR_TO_DATE('1846','YYYY'));
+insert into ETRENEA values (1,1,null,null,STR_TO_DATE('1839-06-18','%Y %m %d'));
+insert into ETRENEA values (2,null,null,null,STR_TO_DATE('1846','%Y'));
 
 -- Les être décédé à
-insert into ETREDECEDEA values (1,2,null,null,STR_TO_DATE('1933-04-22','YYYY-MM-DD'));
+insert into ETREDECEDEA values (1,2,null,null,STR_TO_DATE('1933-04-22','%Y %m %d'));
 
 -- Les stations
-insert into STATION values (1);
+insert into STATION values (1,2);
 
 -- Les relations
 insert into RELATION values (1,"Marié");
@@ -79,17 +79,17 @@ insert into TECHNIQUE values (1,"va-et-viens");
 insert into MATERIEL values (1,"Fusil porte-Amarre");
 
 -- Les sauvetages
-insert into SAUVETAGE values (1,2,1,null,1,STR_TO_DATE('1867-11-02','YYYY-MM-DD'),5,null);
+insert into SAUVETAGE values (1,2,1,null,1,STR_TO_DATE('1867-11-02','%Y %m %d'),5,null);
 
 -- Les avoir pour histoire de station
 
 
 -- Les avoir pour histoire de personne
-insert into AVOIRPOURHISTOIREPERSONNE values (1,1,STR_TO_DATE('1902-03-07','YYYY-MM-DD'));
+insert into AVOIRPOURHISTOIREPERSONNE values (1,1,STR_TO_DATE('1902-03-07','%Y %m %d'));
 
 
 -- Les avoir pour histoire de sauvetage
-insert into AVOIRPOURHISTOIRESAUVETAGE values (1,2,STR_TO_DATE('1868-04-28','YYYY-MM-DD'));
+insert into AVOIRPOURHISTOIRESAUVETAGE values (1,2,STR_TO_DATE('1868-04-28','%Y %m %d'));
 
 
 -- Les avoir pour histoire de bateau
