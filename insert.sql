@@ -14,7 +14,7 @@ insert into PAYS values (1,'France');
 
 -- Les être né à
 insert into ETRENEA values (1,1,null,null,STR_TO_DATE('1839-06-18','%Y-%m-%d'));
-insert into ETRENEA values (2,null,null,null,STR_TO_DATE('1846-00-00','%Y-%m-%d'));
+insert into ETRENEA values (2,null,null,null,STR_TO_DATE('1846','%Y'));
 
 -- Les être décédé à
 insert into ETREDECEDEA values (1,2,null,null,STR_TO_DATE('1933-04-22','%Y-%m-%d'));
