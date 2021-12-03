@@ -1,263 +1,100 @@
+-- Les personnes
+insert into PERSONNE values (1,'GOSSIN','Charles Alexis',null);
+insert into PERSONNE values (2,'FICQUET','Marie Rosalie',null);
 
-DROP TABLE IF EXISTS AVOIRPOURHISTOIREBATEAU;
-DROP TABLE IF EXISTS AVOIRPOURHISTOIREPERSONNE;
-DROP TABLE IF EXISTS AVOIRPOURHISTOIRESAUVETAGE;
-DROP TABLE IF EXISTS AVOIRPOURHISTOIRESTATION;
-DROP TABLE IF EXISTS AVOIRPOURHISTOIRETECHNIQUE;
-DROP TABLE IF EXISTS SAUVETAGE;
-DROP TABLE IF EXISTS MATERIEL;
-DROP TABLE IF EXISTS TECHNIQUE;
-DROP TABLE IF EXISTS BATEAUUSE;
-DROP TABLE IF EXISTS BATEAU;
-DROP TABLE IF EXISTS TEXTE;
-DROP TABLE IF EXISTS ETREDECORE;
-DROP TABLE IF EXISTS AVOIRPOURIMAGE;
-DROP TABLE IF EXISTS IMAGES;
-DROP TABLE IF EXISTS NATIONALITE;
-DROP TABLE IF EXISTS FONCTION;
-DROP TABLE IF EXISTS GRADE;
-DROP TABLE IF EXISTS ETREENRELATION;
-DROP TABLE IF EXISTS RELATION;
-DROP TABLE IF EXISTS STATION;
-DROP TABLE IF EXISTS ETREDECEDEA;
-DROP TABLE IF EXISTS ETRENEA;
-DROP TABLE IF EXISTS PAYS;
-DROP TABLE IF EXISTS DEPARTEMENT;
-DROP TABLE IF EXISTS VILLE;
-DROP TABLE IF EXISTS PERSONNE;
+-- Les villes
+insert into VILLE values (1,'Gravelines');
+insert into VILLE values (2,'Malo-les-Bains');
 
+-- Les départements
+insert into DEPARTEMENT values (1,'Nord');
 
-CREATE TABLE PERSONNE (
-  idP int AUTO_INCREMENT,
-  nomP varchar(30),
-  prenomP varchar(30),
-  dateRetraiteP date,
-  PRIMARY KEY (idP)
-);
+-- Les pays
+insert into PAYS values (1,'France');
 
-CREATE TABLE VILLE (
-  idVille int AUTO_INCREMENT,
-  nomVille varchar(30),
-  codePostalVille int,
-  PRIMARY KEY (idVille)
-);
+-- Les être né à
+insert into ETRENEA values (1,1,null,null,STR_TO_DATE('1839-06-18','YYYY-MM-DD'));
+insert into ETRENEA values (2,null,null,null,STR_TO_DATE('1846','YYYY'));
 
-CREATE TABLE DEPARTEMENT (
-  idDepartement int AUTO_INCREMENT,
-  nomDepartement varchar(30),
-  PRIMARY KEY (idDepartement)
-);
+-- Les être décédé à
+insert into ETREDECEDEA values (1,2,null,null,STR_TO_DATE('1933-04-22','YYYY-MM-DD'));
 
-CREATE TABLE PAYS (
-  idPays int AUTO_INCREMENT,
-  nomPays varchar(30),
-  PRIMARY KEY (idPays)
-);
+-- Les stations
+insert into STATION values (1);
 
-CREATE TABLE ETRENEA (
-  idP int,
-  idVille int,
-  idDepartement int,
-  idPays int,
-  dateNaissP date,
-  PRIMARY KEY (idP),
-  FOREIGN KEY (idP) REFERENCES PERSONNE(idP),
-  FOREIGN KEY (idVille) REFERENCES VILLE(idVille),
-  FOREIGN KEY (idDepartement) REFERENCES DEPARTEMENT(idDepartement),
-  FOREIGN KEY (idPays) REFERENCES PAYS(idPays)
-);
+-- Les relations
+insert into RELATION values (1,"Marié");
 
-CREATE TABLE ETREDECEDEA (
-  idP int,
-  idVille int,
-  idDepartement int,
-  idPays int,
-  dateDecesP date,
-  PRIMARY KEY (idP),
-  FOREIGN KEY (idP) REFERENCES PERSONNE(idP),
-  FOREIGN KEY (idVille) REFERENCES VILLE(idVille),
-  FOREIGN KEY (idDepartement) REFERENCES DEPARTEMENT(idDepartement),
-  FOREIGN KEY (idPays) REFERENCES PAYS(idPays)
+-- Les être en relations
+insert into ETREENRELATION values (1,1,2,null);
 
-);
+-- Les grades
 
-CREATE TABLE STATION (
-  idStation int AUTO_INCREMENT,
-  idVille int,
-  PRIMARY KEY (idStation),
-  FOREIGN KEY (idVille) REFERENCES VILLE(idVille)
-);
+-- Les fonctions
+insert into FONCTION values (1,"Pilote");
 
-CREATE TABLE RELATION (
-  idRelation int AUTO_INCREMENT,
-  nomRelation varchar(30),
-  PRIMARY KEY (idRelation)
-);
+-- Les postes
+insert into POSTE values (1,1,null,1,null,null,null);
 
-CREATE TABLE ETREENRELATION (
-  idRelation int,
-  idP1 int,
-  idP2 int,
-  dateRelation date,
-  PRIMARY KEY (idRelation, idP1, idP2),
-  FOREIGN KEY (idP1) REFERENCES PERSONNE(idP),
-  FOREIGN KEY (idP2) REFERENCES PERSONNE(idP),
-  FOREIGN KEY (idRelation) REFERENCES RELATION(idRelation)
+-- Les nationalités
+insert into NATIONALITE values (1,"Français");
 
-);
-
-CREATE TABLE GRADE (
-  idGrade int AUTO_INCREMENT,
-  nomGrade varchar(30),
-  PRIMARY KEY (idGrade)
-);
-
-CREATE TABLE FONCTION (
-  idFonction int AUTO_INCREMENT,
-  nomFonction varchar(30),
-  PRIMARY KEY (idFonction)
-);
-
-CREATE TABLE POSTE (
-  idPoste int AUTO_INCREMENT,
-  idP int,
-  idGrade int,
-  idFonction int,
-  dateDebut date,
-  dateFin date,
-  complement varchar(30),
-  PRIMARY KEY (idPoste),
-  FOREIGN KEY (idP) REFERENCES PERSONNE(idP),
-  FOREIGN KEY (idGrade) REFERENCES GRADE(idGrade),
-  FOREIGN KEY (idFonction) REFERENCES FONCTION(idFonction)
-
-);
-
-CREATE TABLE NATIONALITE (
-  idNatio int AUTO_INCREMENT,
-  nomNatio varchar(30),
-  PRIMARY KEY (idNatio)
-);
-
-CREATE TABLE IMAGES (
-  idImage int AUTO_INCREMENT,
-  nomImage varchar(30),
-  PRIMARY KEY (idImage)
-);
-
-CREATE TABLE AVOIRPOURIMAGE (
-  idImage int,
-  idP int,
-  PRIMARY KEY (idImage, idP),
-  FOREIGN KEY (idP) REFERENCES PERSONNE(idP),
-  FOREIGN KEY (idImage) REFERENCES IMAGE(idImage)
-);
-
-CREATE TABLE ETREDECORE (
-  idImage int,
-  idP int,
-  nomDecoration varchar(30),
-  dateDecoration date,
-  PRIMARY KEY (nomDecoration, idP),
-  FOREIGN KEY (idP) REFERENCES PERSONNE(idP)
-
-);
-
-CREATE TABLE TEXTE (
-  idTexte int AUTO_INCREMENT,
-  titreTexte varchar(30),
-  contenuTexte varchar(1000),
-  sourceTexte varchar(100),
-  PRIMARY KEY (idTexte)
-);
+-- Les images
 
 
-CREATE TABLE BATEAU (
-  idBat int AUTO_INCREMENT,
-  nomBat varchar(30),
-  PRIMARY KEY (idBat)
-);
+-- Les avoir pour image
 
-CREATE TABLE BATEAUUSE (
-  idBat int AUTO_INCREMENT,
-  typeBat varchar(30),
-  tailleBat varchar(30),
-  dateEssaiBat date,
-  dateMiseEnPlaceBat date,
-  PRIMARY KEY (idBat),
-  FOREIGN KEY (idBat) REFERENCES BATEAU(idBat)
-); 
 
-CREATE TABLE TECHNIQUE (
-  idTechnique int AUTO_INCREMENT,
-  nomTechnique varchar(30),
-  PRIMARY KEY (idTechnique)
-); 
+-- Les être décoré
+insert into ETREDECORE values (null,1,"Médaille d'or Sa Majesté la Reine d'Angleterre",null);
 
-CREATE TABLE MATERIEL (
-  idMateriel int AUTO_INCREMENT,
-  nomMateriel varchar(30),
-  PRIMARY KEY (idMateriel)
-); 
+-- Les textes
+insert into TEXTE values (1,"Pierre Louis Joseph Gossin",
+                            "Allant à la pêche aux moules il fut  abordé par un pêcheur Belge
+                            Selon l’enquête  Pierre n’avait pas de feux de navigation –  Son corps sera retrouvé le 28 février. il manquait une jambe coupée par un godet de la drague et le cadavre était couvert de blessures, que le docteur Ruyssen déclara avoir été faites post Mortem. Ce n’est pas l’avis du frère du noyé, M. Gossin, chevalier de la Légion d’honneur et ancien patron de corvettes de pilotes et du canot de sauvetage. * Il a déposé au parquet une plainte dans laquelle il déclare que son frère, après l’abordage, avait essayé de monter sur le bateau belge..  Les marins de ce dernier l’auraient repoussé à coups de couteau. Une enquête est ouverte.
+                            Sources  Grand Echo du Nord de la France – articles de Février et du 7 mars 1902",
+                            null);
 
-CREATE TABLE SAUVETAGE (
-  idSauvetage int AUTO_INCREMENT,
-  idBatUSE int,
-  idBat int,
-  idMateriel int,
-  idTechnique int,
-  dateSauvetage int,
-  nbPersSauvees int,
-  nbPersDecedees int,
-  PRIMARY KEY (idSauvetage),
-  FOREIGN KEY (idBatUSE) REFERENCES BATEAUUSE(idBat),
-  FOREIGN KEY (idBat) REFERENCES BATEAU(idBat),
-  FOREIGN KEY (idMateriel) REFERENCES MATERIEL(idMateriel),
-  FOREIGN KEY (idTechnique) REFERENCES TECHNIQUE(idTechnique)
-);
+insert into TEXTE values (2,null,
+                            "Dunkerque :
 
-CREATE TABLE AVOIRPOURHISTOIRESTATION (
-  idTexte int,
-  idStation int,
-  dateHistoire date,
-  PRIMARY KEY (idTexte, idStation),
-  FOREIGN KEY (idTexte) REFERENCES TEXTE(idTexte),
-  FOREIGN KEY (idStation) REFERENCES STATION(idStation)
-);
+A neuf heures du matin, le sémaphore de Dunkerque ayant signalé le naufrage, à trois lieues au large, d’un navire dont on n’apercevait plus de terre qu’une partie de la mâture, plusieurs hommes dévoués, pilotes, employés des ponts et chaussées, capitaine et équipage du remorqueur, se présentèrent aussitôt pour tenter, s’il était possible, le sauvetage.
 
-CREATE TABLE AVOIRPOURHISTOIREPERSONNE (
-  idP int,
-  idTexte int,
-  dateHistoire date,
-  PRIMARY KEY (idP, idTexte),
-  FOREIGN KEY (idTexte) REFERENCES TEXTE(idTexte),
-  FOREIGN KEY (idP) REFERENCES PERSONNE(idP)
+Immédiatement, un équipage de neuf hommes fut constitué pour le canot de la Société Humaine. Ficquet était désigné comme patron. Le remorqueur INDUSTRIE poussa ses feux et, dès qu’il eut assez d’eau, il sortit, traînant derrière lui le canot de secours dont il avait pris momentanément l’équipage à bord. Sous l’influence d’un vent violent de nord-nord-est la mer était très mauvaise.
 
-);
+A peine en dehors des jetées, le navire enfourna à plusieurs reprises, au point que l’on put craindre d’être obligé de rebrousser chemin.",
+                            "Annales de la société centrale de sauvetage des naufragés");
 
-CREATE TABLE AVOIRPOURHISTOIRESAUVETAGE (
-  idSauvetage int,
-  idTexte int,
-  dateHistoire date,
-  PRIMARY KEY (idSauvetage, idTexte),
-  FOREIGN KEY (idTexte) REFERENCES TEXTE(idTexte),
-  FOREIGN KEY (idSauvetage) REFERENCES SAUVETAGE(idSauvetage)
-);
+-- Les bateaux
+insert into BATEAU values (1,"Spring");
+insert into BATEAU values (2,"Industrie");
 
-CREATE TABLE AVOIRPOURHISTOIREBATEAU (
-  idbat int,
-  idTexte int,
-  dateHistoire date,
-  PRIMARY KEY (idBat, idTexte),
-  FOREIGN KEY (idTexte) REFERENCES TEXTE(idTexte),
-  FOREIGN KEY (idBat) REFERENCES BATEAU(idBat)
-);
+-- Les bateaux de sauvetages
+insert into BATEAUUSE values (2,"Remorqueur",null,null,null);
 
-CREATE TABLE AVOIRPOURHISTOIRETECHNIQUE (
-  idTechnique int,
-  idTexte int,
-  dateHistoire date,
-  PRIMARY KEY (idTechnique, idTexte),
-  FOREIGN KEY (idTexte) REFERENCES TEXTE(idTexte),
-  FOREIGN KEY (idTechnique) REFERENCES TECHNIQUE(idTechnique)
-);
+-- Les techniques
+insert into TECHNIQUE values (1,"va-et-viens");
+
+-- Les materiels
+insert into MATERIEL values (1,"Fusil porte-Amarre");
+
+-- Les sauvetages
+insert into SAUVETAGE values (1,2,1,null,1,STR_TO_DATE('1867-11-02','YYYY-MM-DD'),5,null);
+
+-- Les avoir pour histoire de station
+
+
+-- Les avoir pour histoire de personne
+insert into AVOIRPOURHISTOIREPERSONNE values (1,1,STR_TO_DATE('1902-03-07','YYYY-MM-DD'));
+
+
+-- Les avoir pour histoire de sauvetage
+insert into AVOIRPOURHISTOIRESAUVETAGE values (1,2,STR_TO_DATE('1868-04-28','YYYY-MM-DD'));
+
+
+-- Les avoir pour histoire de bateau
+
+
+-- Les avoir pour histoire de technique
+
+
