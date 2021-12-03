@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insertion</title>
+    <link rel="stylesheet" href="./styles/insert.css">
+</head>
+<body>
+
+    <script>function masquer_div_erreur(id,id2){
+
+        const email = document.querySelector('input').value
+        const article = document.querySelector('textarea').value
+        const divachacher = document.querySelector('#divachacher')
+        const divachacher2 = document.querySelector('#divachacher2')
+        const divachacher3 = document.querySelector('#divachacher3')
+        console.log(divachacher3)
+        console.log(email)
+        console.log(article) 
+          if (email.length == 0) {
+            divachacher.style.display = 'block';
+          }
+          else {
+            divachacher.style.display = 'none';
+               
+          }
+          if (article.length != 0){
+            divachacher2.style.display = 'none';
+            }
+          else { 
+            divachacher2.style.display = 'block';
+
+          }
+          if (article.length != 0 && email.length !=0 ){
+            divachacher3.style.display = 'block';
+            }
+          else { 
+            divachacher3.style.display = 'none';
+
+          }
+          
+    }
+        </script>
+    <form action="/ma-page-de-traitement" method="post" class = "formulaire">
+        <div class="formulaire-email">
+            <label for="mail">e-mail :</label>
+            <input type="email" id="mail" placeholder="Entrez votre addresse mail ici" name="user_mail">
+        </div>
+        <div class = " formulaire-article">
+            <label for="Article">Votre Article  :</label>
+            <textarea id="Article" name="user_article " placeholder="Entrez votre article ici"></textarea>
+        </div>
+        <div class="formulaire-bouton">
+            <input type="button" value="Envoyer" onclick="masquer_div_erreur('mail','Article');">
+          </div>        
+    </form>
+    <div class="erreur_article_email" id="divachacher" style="display:none;">
+    <img src="./../IMG/PikPng.com_cross-out-png_424916.png" class = "error_cross">Merci de renseigner le mail</div>
+    
+    <div class="erreur-article-email" id="divachacher2" style="display:none;">
+        <img src="./../IMG/PikPng.com_cross-out-png_424916.png" class = "error_cross">Merci de renseigner quelque chose dans articles</div>
+
+    <div class="attente" id="divachacher3" style="display:none;">
+        <img src="./../IMG/check.png" class = "check">Votre article a bien était envoyer il va être mis en examen merci de votre</div>
+</body>
+</html>
