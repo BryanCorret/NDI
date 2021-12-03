@@ -3,8 +3,8 @@ insert into PERSONNE values (1,'GOSSIN','Charles Alexis',null);
 insert into PERSONNE values (2,'FICQUET','Marie Rosalie',null);
 
 -- Les villes
-insert into VILLE values (1,'Gravelines');
-insert into VILLE values (2,'Malo-les-Bains');
+insert into VILLE values (1,'Gravelines',null);
+insert into VILLE values (2,'Malo-les-Bains',null);
 
 -- Les départements
 insert into DEPARTEMENT values (1,'Nord');
@@ -14,7 +14,7 @@ insert into PAYS values (1,'France');
 
 -- Les être né à
 insert into ETRENEA values (1,1,null,null,STR_TO_DATE('1839-06-18','%Y-%m-%d'));
-insert into ETRENEA values (2,null,null,null,STR_TO_DATE('1846','%Y'));
+insert into ETRENEA values (2,null,null,null,STR_TO_DATE('1846-00-00','%Y-%m-%d'));
 
 -- Les être décédé à
 insert into ETREDECEDEA values (1,2,null,null,STR_TO_DATE('1933-04-22','%Y-%m-%d'));
