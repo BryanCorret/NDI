@@ -12,5 +12,6 @@
 	?>
 	<link rel="stylesheet" type="text/css" href="styles/header.css">
 	<link rel="stylesheet" type="text/css" href="styles/footer.css">
+	<script src="js/conso_carbonne.js"></script>
 	<title>NDI</title>
 </head>
