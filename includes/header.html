@@ -1,22 +1,33 @@
+<link rel="stylesheet" type="text/css" href="../styles/header.css">
+
 <header>
     <nav>
-        <ul class="navigation">
-            <li class="deroulant"><a href="">Accueil &ensp;</a>
-                <ul class="sous">
-                    <li><a href="">ss menu 1</a></li>
-                    <li><a href="">ss menu 2</a></li>
-                    <li><a href="">ss menu 3</a></li>
-                    <li><a href="">ss menu 6</a></li>
-                </ul>
-            </li>
-            <li><a href="">A Propos</a></li>
-            <li><a href="">Nos souvenirs</a></li>
-            <li><a href="">Historique</a></li>
-            <!-- <li><a href="">Moyens maritimes</a></li>
-            <li><a href="">Techniques</a></li>
-            <li><a href="">Historique</a></li>
-            <li><a href="">Compléments</a></li>
-            <li><a href="">Estaminets</a></li> -->
-        </ul>
+        <h4>LOGO</h4>
+        <div class="center">
+            <ul class="">
+                <li><a href="#" class="active">Accueil</a></li>
+                <li><a href="#">A propos</a></li>
+                <li><a href="#">Nos sauveteurs</a></li>
+                <li><a href="#">Historique</a></li>
+            </ul>
+        </div>
+        <div class="burger">
+            <div class="ligne"></div>
+            <div class="ligne"></div>
+            <div class="ligne"></div>
+        </div>
     </nav>
 </header>
+
+<script>
+    const burger = document.querySelector('.burger');
+    const liste = document.querySelector('ul'); 
+    const li = document.querySelectorAll('li')
+
+    burger.addEventListener('click', () => {
+        for (let i = 0; i < li.length ; i++) {
+            li[i].classList.toggle('transf')
+        }
+        liste.classList.toggle('mobile')
+    })  
+</script>
