@@ -14,6 +14,7 @@ DROP TABLE IF EXISTS ETREDECORE;
 DROP TABLE IF EXISTS AVOIRPOURIMAGE;
 DROP TABLE IF EXISTS IMAGES;
 DROP TABLE IF EXISTS NATIONALITE;
+DROP TABLE IF EXISTS POSTE;
 DROP TABLE IF EXISTS FONCTION;
 DROP TABLE IF EXISTS GRADE;
 DROP TABLE IF EXISTS ETREENRELATION;
@@ -28,7 +29,7 @@ DROP TABLE IF EXISTS PERSONNE;
 
 
 CREATE TABLE PERSONNE (
-  idP int,
+  idP int AUTO_INCREMENT,
   nomP varchar(30),
   prenomP varchar(30),
   dateRetraiteP date,
@@ -36,20 +37,20 @@ CREATE TABLE PERSONNE (
 );
 
 CREATE TABLE VILLE (
-  idVille int,
+  idVille int AUTO_INCREMENT,
   nomVille varchar(30),
   codePostalVille int,
   PRIMARY KEY (idVille)
 );
 
 CREATE TABLE DEPARTEMENT (
-  idDepartement int,
+  idDepartement int AUTO_INCREMENT,
   nomDepartement varchar(30),
   PRIMARY KEY (idDepartement)
 );
 
 CREATE TABLE PAYS (
-  idPays int,
+  idPays int AUTO_INCREMENT,
   nomPays varchar(30),
   PRIMARY KEY (idPays)
 );
@@ -82,12 +83,14 @@ CREATE TABLE ETREDECEDEA (
 );
 
 CREATE TABLE STATION (
-  idStation int,
-  PRIMARY KEY (idStation)
+  idStation int AUTO_INCREMENT,
+  idVille int,
+  PRIMARY KEY (idStation),
+  FOREIGN KEY (idVille) REFERENCES VILLE(idVille)
 );
 
 CREATE TABLE RELATION (
-  idRelation int,
+  idRelation int AUTO_INCREMENT,
   nomRelation varchar(30),
   PRIMARY KEY (idRelation)
 );
@@ -105,19 +108,19 @@ CREATE TABLE ETREENRELATION (
 );
 
 CREATE TABLE GRADE (
-  idGrade int,
+  idGrade int AUTO_INCREMENT,
   nomGrade varchar(30),
   PRIMARY KEY (idGrade)
 );
 
 CREATE TABLE FONCTION (
-  idFonction int,
+  idFonction int AUTO_INCREMENT,
   nomFonction varchar(30),
   PRIMARY KEY (idFonction)
 );
 
 CREATE TABLE POSTE (
-  idPoste int,
+  idPoste int AUTO_INCREMENT,
   idP int,
   idGrade int,
   idFonction int,
@@ -132,13 +135,13 @@ CREATE TABLE POSTE (
 );
 
 CREATE TABLE NATIONALITE (
-  idNatio int,
+  idNatio int AUTO_INCREMENT,
   nomNatio varchar(30),
   PRIMARY KEY (idNatio)
 );
 
 CREATE TABLE IMAGES (
-  idImage int,
+  idImage int AUTO_INCREMENT,
   nomImage varchar(30),
   PRIMARY KEY (idImage)
 );
@@ -148,13 +151,13 @@ CREATE TABLE AVOIRPOURIMAGE (
   idP int,
   PRIMARY KEY (idImage, idP),
   FOREIGN KEY (idP) REFERENCES PERSONNE(idP),
-  FOREIGN KEY (idImage) REFERENCES IMAGE(idImage)
+  FOREIGN KEY (idImage) REFERENCES IMAGES(idImage)
 );
 
 CREATE TABLE ETREDECORE (
   idImage int,
   idP int,
-  nomDecoration varchar(30),
+  nomDecoration varchar(100),
   dateDecoration date,
   PRIMARY KEY (nomDecoration, idP),
   FOREIGN KEY (idP) REFERENCES PERSONNE(idP)
@@ -162,7 +165,7 @@ CREATE TABLE ETREDECORE (
 );
 
 CREATE TABLE TEXTE (
-  idTexte int,
+  idTexte int AUTO_INCREMENT,
   titreTexte varchar(30),
   contenuTexte varchar(1000),
   sourceTexte varchar(100),
@@ -171,14 +174,13 @@ CREATE TABLE TEXTE (
 
 
 CREATE TABLE BATEAU (
-  idBat int,
+  idBat int AUTO_INCREMENT,
   nomBat varchar(30),
   PRIMARY KEY (idBat)
 );
 
 CREATE TABLE BATEAUUSE (
-  idBat int,
-  nomBat varchar(30),
+  idBat int AUTO_INCREMENT,
   typeBat varchar(30),
   tailleBat varchar(30),
   dateEssaiBat date,
@@ -188,29 +190,29 @@ CREATE TABLE BATEAUUSE (
 ); 
 
 CREATE TABLE TECHNIQUE (
-  idTechnique int,
+  idTechnique int AUTO_INCREMENT,
   nomTechnique varchar(30),
   PRIMARY KEY (idTechnique)
 ); 
 
 CREATE TABLE MATERIEL (
-  idMateriel int,
+  idMateriel int AUTO_INCREMENT,
   nomMateriel varchar(30),
   PRIMARY KEY (idMateriel)
 ); 
 
 CREATE TABLE SAUVETAGE (
-  idSauvetage int,
-  idBateauUSE int,
-  idBateau int,
+  idSauvetage int AUTO_INCREMENT,
+  idBatUSE int,
+  idBat int,
   idMateriel int,
   idTechnique int,
   dateSauvetage int,
   nbPersSauvees int,
   nbPersDecedees int,
   PRIMARY KEY (idSauvetage),
-  FOREIGN KEY (idBateauUSE) REFERENCES BATEAUUSE(idBateau),
-  FOREIGN KEY (idBateau) REFERENCES BATEAU(idBateau),
+  FOREIGN KEY (idBatUSE) REFERENCES BATEAUUSE(idBat),
+  FOREIGN KEY (idBat) REFERENCES BATEAU(idBat),
   FOREIGN KEY (idMateriel) REFERENCES MATERIEL(idMateriel),
   FOREIGN KEY (idTechnique) REFERENCES TECHNIQUE(idTechnique)
 );
